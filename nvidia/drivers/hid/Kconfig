@@ -1,0 +1,27 @@
+append_menu "HID support"
+
+menu "SHIELD accessory HID drivers"
+
+config HID_SHIELD_BLAKE
+	tristate "SHIELD game controller"
+	depends on USB_HID
+	---help---
+	Support for NVIDIA SHIELD game controller.
+
+config HID_SHIELD_REMOTE
+	tristate "SHIELD remote control support"
+	depends on USB_HID
+	---help---
+	Support for NVIDIA SHIELD remote control.
+
+config HID_SHIELD_FF
+	bool "SHIELD controller force-feedback/rumble support"
+	depends on USB_HID
+	depends on HID_SHIELD_REMOTE
+	select INPUT_FF_MEMLESS
+	---help---
+	Support for NVIDIA SHIELD controller force-feedback/rumble.
+
+endmenu
+
+endmenu
